@@ -8,10 +8,11 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
-
-//Preflight
-app.options('*', cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
