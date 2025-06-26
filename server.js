@@ -8,10 +8,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({
-  origin: 'https://dermasolutionclient-1.onrender.com', 
-  credentials: true
-}));
+app.use(cors());
+
+//Preflight
+app.options('*', cors());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
